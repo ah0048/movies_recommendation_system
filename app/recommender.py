@@ -11,7 +11,7 @@ class Recommender:
 
     def preprocess_data(self):
         # Select relevant columns and fill missing values
-        for col in ['genres', 'keywords', 'overview', 'tagline']:
+        for col in ['genres', 'keywords', 'overview', 'tagline', 'vote_average']:
             self.dataset[col] = self.dataset[col].fillna('')
 
         # Combine relevant features into a single string
@@ -19,7 +19,8 @@ class Recommender:
             self.dataset['genres'] + " " +
             self.dataset['keywords'] + " " +
             self.dataset['overview'] + " " +
-            self.dataset['tagline']
+            self.dataset['tagline'] + " " +
+            str(self.dataset['vote_average'])
         )
 
     def calculate_similarity(self):
